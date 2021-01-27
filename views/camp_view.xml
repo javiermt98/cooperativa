@@ -1,0 +1,47 @@
+<odoo>
+  <data>
+    <!-- explicit camp_model view definition -->
+
+    <record model="ir.ui.view" id="cooperativa.camp_model_tree">
+      <field name="name">cooperativa camp_model</field>
+      <field name="model">cooperativa.camp_model</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="fecha"/>
+          <field name="socio"/>
+          <field name="producto"/>
+          <field name="cantidad"/>
+        </tree>
+      </field>
+    </record>
+
+        <record model="ir.ui.view" id="cooperativa.camp_model_form">
+      <field name="name">cooperativa camp_model</field>
+      <field name="model">cooperativa.camp_model</field>
+      <field name="arch" type="xml">
+      <form string="Nueva Campanya">
+        <sheet>
+        <group>
+          <field name="name"/>
+          <field name="fecha"  />
+          <field name="socio"/>
+          <field name="producto"/>
+          <field name="cantidad" />
+          </group>
+        </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="cooperativa.action_window_camp">
+      <field name="name">Campanya</field>
+      <field name="res_model">cooperativa.camp_model</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

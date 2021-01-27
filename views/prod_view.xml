@@ -1,0 +1,49 @@
+<odoo>
+  <data>
+    <!-- explicit prod_model view definition -->
+
+    <record model="ir.ui.view" id="cooperativa.prod_model_tree">
+      <field name="name">cooperativa prod_model</field>
+      <field name="model">cooperativa.prod_model</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="descripcion"/>
+          <field name="precio"/>
+          <field name="kgtot"/>
+        </tree>
+      </field>
+    </record>
+
+        <record model="ir.ui.view" id="cooperativa.prod_model_form">
+      <field name="name">cooperativa prod_model</field>
+      <field name="model">cooperativa.prod_model</field>
+      <field name="arch" type="xml">
+            <form string="Nuevo Producto">
+             <header>
+            <button name="eliminaKg" type="object" string="Eliminar Kilos" confirm="¿Estás seguro de restablecer los Kilos?"></button>
+          </header>
+
+        <sheet>
+        <group>
+          <field name="name"/>
+          <field name="descripcion"/>
+          <field name="precio"/>
+          <field name="kgtot" />
+          </group>
+        </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="cooperativa.action_window_prod">
+      <field name="name">Productos</field>
+      <field name="res_model">cooperativa.prod_model</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

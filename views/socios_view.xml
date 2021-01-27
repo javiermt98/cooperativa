@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+    <!-- explicit socios_model view definition -->
+
+    <record model="ir.ui.view" id="cooperativa.socios_model_tree">
+      <field name="name">cooperativa socios_model</field>
+      <field name="model">cooperativa.socios_model</field>
+      <field name="arch" type="xml">
+        <tree decoration-danger="regpend&gt;1">
+          <field name="id_socio"/>
+          <field name="name"/>
+          <field name="ape"/>
+          <field name="dni"/>
+          <field name="fechaAlta"/>
+          <field name="telf"/>
+          <field name="email"/>
+          <field name="saldo"/>
+          <field name="regpend" />
+        </tree>
+      </field>
+    </record>
+
+        <record model="ir.ui.view" id="cooperativa.socios_model_form">
+      <field name="name">cooperativa socios_model</field>
+      <field name="model">cooperativa.socios_model</field>
+      <field name="arch" type="xml">
+            <form string="Nuev Socio">
+
+        <sheet>
+        <group>
+          <field name="id_socio"/>
+          <field name="name"/>
+          <field name="ape"/>
+          <field name="dni"/>
+          <field name="fechaAlta" />
+          <field name="telf"/>
+          <field name="email"/>
+          <field name="saldo" />
+          <field name="regpend">
+                  <tree>
+          <field name="name"/>
+          <field name="fecha"/>
+          <field name="producto"/>
+          <field name="cantidad"/>
+        </tree>
+          
+          </field>
+          </group>
+        </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="cooperativa.action_window_socios">
+      <field name="name">Socios</field>
+      <field name="res_model">cooperativa.socios_model</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>
