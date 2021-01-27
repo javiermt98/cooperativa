@@ -6,7 +6,7 @@
       <field name="name">cooperativa socios_model</field>
       <field name="model">cooperativa.socios_model</field>
       <field name="arch" type="xml">
-        <tree decoration-danger="regpend&gt;1">
+        <tree decoration-danger="len(regpend) &gt;= 1">
           <field name="id_socio"/>
           <field name="name"/>
           <field name="ape"/>

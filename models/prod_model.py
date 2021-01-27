@@ -14,11 +14,11 @@ class cooperativa(models.Model):
     descripcion = fields.Char(string="Descripcion", required=True)
     precio = fields.Float(string="Precio", required=True)
     prod = fields.One2many("cooperativa.camp_model","producto", "Campanya")
-    kgtot = fields.Float(string="Kilos Totales", readonly=True, compute="_calcKg", store=True)
+    kgtot = fields.Float(string="Kilos Totales", readonly=True, compute="_calcKg", store=True, defaut=0)
 
     @api.depends("precio")
     def _precioPos(self):
-        if self.precio<0:
+        if self.precio<=0:
             raise ValidationError("El precio no puede ser negativo")
 
     def _calcKg(self):
@@ -26,7 +26,7 @@ class cooperativa(models.Model):
         suma = 0
         for i in self.prod:
             suma += i.cantidad
-        suma = self.kgtot
+        self.kgtot = suma
     
     def eliminaKg(self):
         self.ensure_one()

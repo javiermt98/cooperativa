@@ -14,10 +14,10 @@ class cooperativa(models.Model):
     ape = fields.Char(string="Apellidos", required=True)
     dni = fields.Char(string="DNI", required=True)
     fechaAlta = fields.Date(string="Fecha", required=True, default=date.today(), readonly=True)
-    telf = fields.Integer(string="Telefono", required=True)
+    telf = fields.Char(string="Telefono", required=True)
     email = fields.Char(string="Email")
     saldo = fields.Float(string="Saldo", default=0, readonly=True)
-    regpend = fields.One2many("cooperativa.camp_model", "socios", "Registros Pendientes")
+    regpend = fields.One2many("cooperativa.camp_model", "socios", "Registros Pendientes", readonly=True)
 
 
     @api.constrains("dni")
@@ -47,6 +47,6 @@ class cooperativa(models.Model):
 
     @api.constrains("telf")
     def _comprobarTelf(self):
-        if len(str(self.telf)) < 9:
-            raise ValidationError("El teléfono debe contener al menos 9 dígitos")
+        if len(self.telf) != 9:
+            raise ValidationError("El teléfono debe contener 9 dígitos")
 
