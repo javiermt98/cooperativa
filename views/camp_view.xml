@@ -21,6 +21,12 @@
       <field name="model">cooperativa.camp_model</field>
       <field name="arch" type="xml">
       <form string="Nueva Campanya">
+                   <header>
+            <button name="actualizaSaldo" type="object" string="Actualizar Saldos" />
+            <button name="actualizaKilos" type="object" string="Actualizar Kilos"  />
+            <button name="eliminaHistorial" type="object" string="Eliminar Historial" confirm="¿Estás seguro de eliminar el Historial?" />
+
+          </header>
         <sheet>
         <group>
           <field name="name"/>

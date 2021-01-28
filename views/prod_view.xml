@@ -21,7 +21,7 @@
       <field name="arch" type="xml">
             <form string="Nuevo Producto">
              <header>
-            <button name="eliminaKg" type="object" string="Eliminar Kilos" confirm="¿Estás seguro de restablecer los Kilos?"></button>
+            <button name="eliminaKg" type="object" string="Eliminar Kilos" confirm="¿Estás seguro de restablecer los Kilos?" />
           </header>
 
         <sheet>
