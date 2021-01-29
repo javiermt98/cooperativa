@@ -13,7 +13,7 @@ class cooperativa(models.Model):
     socios = fields.Many2one("cooperativa.socios_model", "Socio")
     producto = fields.Many2one("cooperativa.prod_model", "Producto")
     cantidad = fields.Float(string="Cantidad", default=0)
-    active = fields.Boolean(readonly=True, default=True)
+    active = fields.Boolean(readonly=True, default=True) 
 
 
 
@@ -25,19 +25,20 @@ class cooperativa(models.Model):
 
     def actualizaKilos(self):
         self.ensure_one()
-        for i in self.producto:
-            i.kgtot +=self.cantidad
+        reg = self.search([("cantidad",">","0"),("active","=","True")])
+        for i in reg:
+            i.producto.kgtot += i.cantidad
         
                
 
     def eliminaHistorial(self):
-        return True
-        # historialSocios = self.search([("active","=","False")])
-        # for i in historialSocios:
-        #     i.unlink()
+        self.ensure_one()
+        reg = self.search([("active","=","False")])
+        reg.unlink()
 
     def actualizaSaldo(self):
         self.ensure_one()
-        for i in self.socios:
-            i.saldo += self.cantidad*self.producto.precio
+        reg = self.search([("active","=","True")])
+        for i in reg:
+            i.socios.saldo += i.cantidad*i.producto.precio
         self.active = False
