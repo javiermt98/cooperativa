@@ -10,6 +10,7 @@ class cooperativa(models.Model):
     _sql_constraints = [('socios_id_uniq','UNIQUE (id_socio)','No puede haber dos socios con el mismo ID'),("dni_uniq", "UNIQUE (dni)", "No puede haber dos DNI iguales")]
 
     name = fields.Char(string="Nombre", required=True)
+    image = fields.Binary(attachment=True)
     id_socio = fields.Integer(string="ID", required=True)
     ape = fields.Char(string="Apellidos", required=True)
     dni = fields.Char(string="DNI", required=True)
@@ -18,6 +19,7 @@ class cooperativa(models.Model):
     email = fields.Char(string="Email")
     saldo = fields.Float(string="Saldo", default=0, readonly=True)
     regpend = fields.One2many("cooperativa.camp_model", "socios", "Registros Pendientes", readonly=True)
+
 
 
     @api.constrains("dni")
