@@ -12,10 +12,11 @@
           <field name="ape"/>
           <field name="dni"/>
           <field name="fechaAlta"/>
-          <field name="telf"/>
-          <field name="email"/>
+          <field name="telf" widget="phone"/>
+          <field name="email" widget="email"/>
           <field name="saldo"/>
           <field name="regpend" />
+
         </tree>
       </field>
     </record>
@@ -35,8 +36,9 @@
           <field name="fechaAlta" />
           <field name="telf"/>
           <field name="email"/>
-          <field name="saldo" />
+          <field name="saldo"/>
           <field name="regpend">
+            
                   <tree>
           <field name="name"/>
           <field name="fecha"/>
@@ -52,12 +54,28 @@
     </record>
 
 
+    <record model="ir.ui.view" id="cooperativa.socios_model_graph">
+      <field name="name">Gráfico de Salarios</field>
+      <field name="model">cooperativa.socios_model</field>
+      <field name="arch" type="xml">
+        <graph type="bar" order="asc">
+
+        <field name="name" type="row" interval="month"/>
+        <field name="saldo" type="measure"/>
+
+        </graph>
+    </field>
+
+    </record>
+    
+
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="cooperativa.action_window_socios">
       <field name="name">Socios</field>
       <field name="res_model">cooperativa.socios_model</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,graph</field>
     </record>
 
   </data>

@@ -40,13 +40,58 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="cooperativa.camp_model_calendar">
+      <field name="name">Calendario de Campanya</field>
+      <field name="model">cooperativa.camp_model</field>
+      <field name="arch" type="xml">
+        <calendar date_start="fecha" color="socios" mode="week" form_view_id="cooperativa.camp_model_form" quick_add="False" event_open_popup="True" >
+
+        <field name="socios" />
+        <field name="producto" />
+
+        </calendar>
+    </field>
+
+    </record>
+
+    
+    <record model="ir.ui.view" id="cooperativa.camp_model_graph">
+      <field name="name">Gráfico de Productos</field>
+      <field name="model">cooperativa.camp_model</field>
+      <field name="arch" type="xml">
+        <graph type="bar" order="asc" stacked="True">
+
+        <field name="socios" />
+        <field name="producto" />
+        <field name="fecha" type="row" interval="month"/>
+        <field name="cantidad" type="measure" />
+
+        </graph>
+    </field>
+    </record>
+
+    <record model="ir.ui.view" id="cooperativa.camp_model_pivot">
+      <field name="name">Pivot de Productos</field>
+      <field name="model">cooperativa.camp_model</field>
+      <field name="arch" type="xml">
+        <pivot string="Pivot de Campanya">
+
+        <field name="socios" />
+        <field name="producto" />
+        <field name="fecha" type="row" interval="month"/>
+        <field name="cantidad" type="measure" />
+
+        </pivot>
+    </field>
+    </record>
+
 
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="cooperativa.action_window_camp">
       <field name="name">Campanya</field>
       <field name="res_model">cooperativa.camp_model</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar,graph,pivot</field>
     </record>
 
   </data>
